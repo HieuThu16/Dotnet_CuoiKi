@@ -1,0 +1,14 @@
+// File: MyStore.Core/GlobalUsings.cs
+global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Diagnostics;
+global using System.Linq;
+global using System.Text.Json.Serialization;
+global using System.Threading.Tasks;
+global using Microsoft.EntityFrameworkCore;
+global using MyStore.Core.Data;
+global using MyStore.Core.Models;
+global using MyStore.Core.Services;
+global using Refit;

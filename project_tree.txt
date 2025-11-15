@@ -1,0 +1,71 @@
+MyStore/
+├── MyStore.Core/                          # Shared core library (.NET Standard 2.0)
+│   ├── Models/
+│   │   ├── Product.cs                     # Product entity model
+│   │   ├── CartItem.cs                    # CartItem entity model
+│   │   ├── OrderModel.cs                  # Order model
+│   │   └── ProductDto.cs                  # DTO for API
+│   ├── Services/
+│   │   ├── ICartService.cs                # CartService interface
+│   │   ├── CartService.cs                 # CartService implementation
+│   │   ├── IStoreApiClient.cs             # API client interface (Refit)
+│   │   └── StoreApiClient.cs              # API client implementation
+│   ├── Data/
+│   │   └── AppDbContext.cs                # EF Core DbContext
+│   ├── MyStore.Core.csproj
+│   └── GlobalUsings.cs
+│
+├── MyStore.Mobile/                        # Main Uno Platform app
+│   ├── ViewModels/
+│   │   ├── ViewModelBase.cs               # Base class for MVVM
+│   │   ├── ProductsViewModel.cs           # Products list VM
+│   │   ├── ProductDetailViewModel.cs      # Product detail VM
+│   │   ├── CartViewModel.cs               # Shopping cart VM
+│   │   └── CheckoutViewModel.cs           # Checkout VM
+│   ├── Views/
+│   │   ├── ProductsPage.xaml              # Products list page
+│   │   ├── ProductsPage.xaml.cs
+│   │   ├── ProductDetailPage.xaml         # Product detail page
+│   │   ├── ProductDetailPage.xaml.cs
+│   │   ├── CartPage.xaml                  # Shopping cart page
+│   │   ├── CartPage.xaml.cs
+│   │   ├── CheckoutPage.xaml              # Checkout page
+│   │   └── CheckoutPage.xaml.cs
+│   ├── App.xaml
+│   ├── App.xaml.cs
+│   ├── AppShell.xaml                      # App navigation shell
+│   ├── AppShell.xaml.cs
+│   ├── MauiProgram.cs                     # DI & app initialization
+│   ├── Resources/
+│   │   └── Styles.xaml                    # Global styles
+│   ├── Platforms/
+│   │   ├── Android/
+│   │   ├── iOS/
+│   │   └── Windows/
+│   ├── MyStore.Mobile.csproj
+│   └── GlobalUsings.cs
+│
+├── MyStore.Tests/                         # Unit tests (xUnit)
+│   ├── CartServiceTests.cs                # Tests for CartService
+│   └── MyStore.Tests.csproj
+│
+├── MyStore.sln                            # Visual Studio solution
+│
+├── Documentation/
+│   ├── project_tree.txt                   # This file
+│   ├── README.md                          # Build & run guide
+│   ├── report.md                          # Final report
+│   ├── acceptance_criteria.md             # Test criteria
+│   └── grading_rubric.md                  # Grading scale
+│
+└── Mock API Server (Optional)
+    └── README in MockServer folder for manual testing
+
+
+KEY DEPENDENCIES:
+- Uno Platform 5.0+
+- CommunityToolkit.Mvvm
+- Entity Framework Core
+- Refit for HTTP calls
+- SQLite
+- xUnit for testing

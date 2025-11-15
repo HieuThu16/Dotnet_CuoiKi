@@ -1,0 +1,101 @@
+# Build results
+bin/
+obj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.userosscache
+*.sln.docstates
+
+# NuGet package files
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+*.nuget.props
+*.nuget.targets
+packages/
+.nuget/
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Rider
+.idea/
+*.sln.iml
+.rider/
+
+# Local environment files
+.env
+.env.local
+appsettings.local.json
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*~
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Test results
+TestResults/
+.coverage
+*.opencover.xml
+
+# Build output
+publish/
+PublishProfiles/
+
+# Node/npm (if using any npm packages)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Misc
+.classpath
+.c9/
+*.jar
+*.class
+.project
+.settings/
+.loadpath
+.factorypath
+.gradle
+.idea
+*.pro.user
+*.pro.user.*
