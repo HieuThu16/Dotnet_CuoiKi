@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.Mobile.Views.ProductDetailPage"
+             Title="Product Details"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="0">
+        <!-- Main Content -->
+        <ScrollView Grid.Row="0">
+            <StackLayout Padding="16" Spacing="16" VerticalOptions="Start">
+                <!-- Product Image -->
+                <Frame Padding="0" CornerRadius="12" HasShadow="False" BorderColor="{StaticResource BorderColor}" BorderWidth="1">
+                    <Label Text="📦" FontSize="80" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" MinimumHeightRequest="200"/>
+                </Frame>
+
+                <!-- Product Info -->
+                <StackLayout Spacing="8">
+                    <!-- Name -->
+                    <Label
+                        Text="{Binding SelectedProduct.Name}"
+                        Style="{StaticResource Headline2}"/>
+
+                    <!-- Price -->
+                    <StackLayout Orientation="Horizontal" Spacing="8">
+                        <Label Text="Price:" FontAttributes="Bold"/>
+                        <Label
+                            Text="{Binding SelectedProduct.Price, StringFormat='${0:F2}'}"
+                            TextColor="{StaticResource PrimaryColor}"
+                            FontAttributes="Bold"
+                            FontSize="18"/>
+                    </StackLayout>
+
+                    <!-- Stock -->
+                    <StackLayout Orientation="Horizontal" Spacing="8">
+                        <Label Text="Stock:" FontAttributes="Bold"/>
+                        <Label
+                            Text="{Binding SelectedProduct.Stock}"
+                            TextColor="{StaticResource TextSecondaryColor}"/>
+                    </StackLayout>
+
+                    <!-- Description -->
+                    <StackLayout Spacing="4">
+                        <Label Text="Description" FontAttributes="Bold" FontSize="14"/>
+                        <Label
+                            Text="{Binding SelectedProduct.Description}"
+                            FontSize="13"
+                            TextColor="{StaticResource TextSecondaryColor}"
+                            LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Quantity Selector -->
+                <StackLayout Spacing="8">
+                    <Label Text="Select Quantity" FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal" Spacing="8" HorizontalOptions="Center">
+                        <Button
+                            Text="-"
+                            Clicked="OnDecreaseQuantity"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="20"
+                            Style="{StaticResource SecondaryButton}"/>
+
+                        <Label
+                            Text="{Binding Quantity}"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            WidthRequest="50"
+                            HorizontalTextAlignment="Center"/>
+
+                        <Button
+                            Text="+"
+                            Clicked="OnIncreaseQuantity"
+                            WidthRequest="40"
+                            HeightRequest="40"
+                            CornerRadius="20"
+                            Style="{StaticResource PrimaryButton}"/>
+                    </StackLayout>
+
+                    <Label
+                        Text="{Binding SelectedProduct.Stock, StringFormat='Max available: {0}'}"
+                        FontSize="12"
+                        TextColor="{StaticResource TextSecondaryColor}"
+                        HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Action Buttons -->
+        <StackLayout Grid.Row="1" Padding="16" Spacing="8" BackgroundColor="{StaticResource PageBackgroundColor}">
+            <Button
+                Text="Add to Cart"
+                Style="{StaticResource PrimaryButton}"
+                Command="{Binding AddToCartCommand}"
+                IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"/>
+
+            <Button
+                Text="Back"
+                Style="{StaticResource SecondaryButton}"
+                Command="{Binding GoBackCommand}"/>
+        </StackLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            Color="{StaticResource PrimaryColor}"/>
+    </Grid>
+</ContentPage>

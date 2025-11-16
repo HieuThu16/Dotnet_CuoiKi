@@ -12,7 +12,15 @@
       "Bash(find . -type f ( -name \"*.db\" -o -name \"*.db-shm\" -o -name \"*.db-wal\" -o -name \"move_files.sh\" ) -delete)",
       "Bash(cd:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Complete MyStore e-commerce application - MVVM, SQLite offline support, 100% tests passing\n\nBuild Status: ✅ SUCCESS (0 errors, 0 warnings)\nTest Status: ✅ 11/11 PASSED (100% pass rate)\nRuntime Status: ✅ APP RUNNING SUCCESSFULLY\n\nFeatures Implemented:\n- MVVM Pattern with CommunityToolkit.Mvvm\n- Shopping cart with add/update/remove operations\n- SQLite database with Entity Framework Core\n- Offline-first architecture with auto-sync\n- Real-time calculations and persistence\n- Comprehensive unit tests (11 tests)\n- Complete documentation (README, report, acceptance criteria, grading rubric)\n- Clean organized folder structure\n- Cross-platform compatible (.NET 8.0)\n\nTechnologies:\n- .NET 8.0 with C# 11\n- Entity Framework Core 8.0.0\n- SQLite for local persistence\n- xUnit for testing\n- Refit for API client\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Complete MyStore e-commerce application - MVVM, SQLite offline support, 100% tests passing\n\nBuild Status: ✅ SUCCESS (0 errors, 0 warnings)\nTest Status: ✅ 11/11 PASSED (100% pass rate)\nRuntime Status: ✅ APP RUNNING SUCCESSFULLY\n\nFeatures Implemented:\n- MVVM Pattern with CommunityToolkit.Mvvm\n- Shopping cart with add/update/remove operations\n- SQLite database with Entity Framework Core\n- Offline-first architecture with auto-sync\n- Real-time calculations and persistence\n- Comprehensive unit tests (11 tests)\n- Complete documentation (README, report, acceptance criteria, grading rubric)\n- Clean organized folder structure\n- Cross-platform compatible (.NET 8.0)\n\nTechnologies:\n- .NET 8.0 with C# 11\n- Entity Framework Core 8.0.0\n- SQLite for local persistence\n- xUnit for testing\n- Refit for API client\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push:*)",
+      "Bash(dotnet workload:*)",
+      "Bash(adb devices:*)",
+      "Bash(dotnet nuget add source:*)",
+      "Bash(dotnet nuget source:*)",
+      "Bash(dotnet nuget list:*)",
+      "Bash(dotnet nuget remove source:*)",
+      "Bash(\"C:\\Users\\ASUS Vivobook\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat\" create avd -n \"Pixel4\" -k \"system-images;android-34;google_apis;arm64-v8a\" -f)"
     ],
     "deny": [],
     "ask": []

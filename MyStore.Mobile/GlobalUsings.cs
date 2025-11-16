@@ -1,0 +1,12 @@
+global using Microsoft.Maui;
+global using Microsoft.Maui.Controls;
+global using Microsoft.Maui.Controls.Hosting;
+global using Microsoft.Maui.Hosting;
+global using System.Collections.ObjectModel;
+global using System.Diagnostics;
+global using System.Globalization;
+global using MyStore.Mobile;
+global using MyStore.Mobile.Views;
+global using MyStore.Mobile.ViewModels;
+global using MyStore.Core.Models;
+global using MyStore.Core.Services;

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.Mobile.Views.CheckoutPage"
+             Title="Checkout"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="0">
+        <!-- Main Content -->
+        <ScrollView Grid.Row="0">
+            <StackLayout Padding="16" Spacing="16">
+                <!-- Order Summary -->
+                <StackLayout Spacing="8">
+                    <Label Text="Order Summary" Style="{StaticResource Headline2}"/>
+
+                    <Frame Padding="12" CornerRadius="8" HasShadow="False" BorderColor="{StaticResource BorderColor}" BorderWidth="1">
+                        <StackLayout Spacing="8">
+                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                <Label Text="Items:" FontAttributes="Bold"/>
+                                <Label Text="{Binding ItemCount}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+
+                            <BoxView Color="{StaticResource BorderColor}" HeightRequest="1"/>
+
+                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                <Label Text="Total:" FontAttributes="Bold" FontSize="16"/>
+                                <Label
+                                    Text="{Binding OrderTotal, StringFormat='${0:F2}'}"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource PrimaryColor}"
+                                    HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <!-- Order Items List -->
+                <StackLayout Spacing="8">
+                    <Label Text="Items" Style="{StaticResource Headline2}"/>
+
+                    <CollectionView ItemsSource="{Binding OrderItems}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="8" Spacing="4" BackgroundColor="White" Margin="0,4" CornerRadius="4">
+                                    <StackLayout Orientation="Horizontal" Spacing="8">
+                                        <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+                                            <Label Text="{Binding Name}" FontSize="12" FontAttributes="Bold"/>
+                                            <Label
+                                                Text="{Binding Quantity, StringFormat='Qty: {0}'}"
+                                                FontSize="11"
+                                                TextColor="{StaticResource TextSecondaryColor}"/>
+                                        </StackLayout>
+                                        <Label
+                                            Text="{Binding Subtotal, StringFormat='${0:F2}'}"
+                                            FontSize="12"
+                                            FontAttributes="Bold"
+                                            VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <!-- Checkout Form -->
+                <StackLayout Spacing="12">
+                    <Label Text="Delivery Information" Style="{StaticResource Headline2}"/>
+
+                    <!-- Customer Name -->
+                    <StackLayout Spacing="4">
+                        <Label Text="Full Name *" FontAttributes="Bold" FontSize="12"/>
+                        <Entry
+                            Placeholder="Enter your full name"
+                            Text="{Binding CustomerName}"
+                            MaxLength="256"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource BorderColor}"
+                            Padding="12,8"
+                            CornerRadius="4"/>
+                    </StackLayout>
+
+                    <!-- Customer Address -->
+                    <StackLayout Spacing="4">
+                        <Label Text="Address *" FontAttributes="Bold" FontSize="12"/>
+                        <Editor
+                            Placeholder="Enter delivery address"
+                            Text="{Binding CustomerAddress}"
+                            MaxLength="512"
+                            HeightRequest="80"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource BorderColor}"
+                            Padding="12,8"
+                            CornerRadius="4"
+                            AutoSize="TextChanges"/>
+                    </StackLayout>
+
+                    <!-- Phone -->
+                    <StackLayout Spacing="4">
+                        <Label Text="Phone Number *" FontAttributes="Bold" FontSize="12"/>
+                        <Entry
+                            Placeholder="Enter phone number (min 10 digits)"
+                            Text="{Binding CustomerPhone}"
+                            Keyboard="Telephone"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource BorderColor}"
+                            Padding="12,8"
+                            CornerRadius="4"/>
+                    </StackLayout>
+
+                    <!-- Notes -->
+                    <StackLayout Spacing="4">
+                        <Label Text="Order Notes (Optional)" FontAttributes="Bold" FontSize="12"/>
+                        <Editor
+                            Placeholder="Add any special requests"
+                            Text="{Binding OrderNotes}"
+                            MaxLength="1000"
+                            HeightRequest="60"
+                            BorderWidth="1"
+                            BorderColor="{StaticResource BorderColor}"
+                            Padding="12,8"
+                            CornerRadius="4"
+                            AutoSize="TextChanges"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Action Buttons -->
+        <StackLayout Grid.Row="1" Padding="16" Spacing="8" BackgroundColor="{StaticResource PageBackgroundColor}">
+            <Button
+                Text="Place Order"
+                Style="{StaticResource PrimaryButton}"
+                Command="{Binding PlaceOrderCommand}"
+                IsEnabled="{Binding IsFormValid}"
+                Opacity="{Binding IsFormValid, Converter={StaticResource BoolToDoubleConverter}}"/>
+
+            <Button
+                Text="Cancel"
+                Style="{StaticResource SecondaryButton}"
+                Command="{Binding CancelCommand}"/>
+        </StackLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            Color="{StaticResource PrimaryColor}"/>
+    </Grid>
+</ContentPage>

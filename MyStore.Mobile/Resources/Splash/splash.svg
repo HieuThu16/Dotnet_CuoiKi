@@ -1,0 +1,6 @@
+<svg viewBox="0 0 540 720" xmlns="http://www.w3.org/2000/svg">
+  <rect width="540" height="720" fill="#512BD4"/>
+  <text x="270" y="300" font-size="80" font-weight="bold" fill="white" text-anchor="middle">🛍️</text>
+  <text x="270" y="400" font-size="32" font-weight="bold" fill="white" text-anchor="middle">MyStore</text>
+  <text x="270" y="450" font-size="20" fill="white" text-anchor="middle">E-Commerce App</text>
+</svg>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyStore.Mobile.Views.ProductsPage"
+             Title="Products"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*" RowSpacing="0">
+        <!-- Header -->
+        <StackLayout Grid.Row="0" Padding="16" Spacing="8" BackgroundColor="{StaticResource PrimaryColor}">
+            <Label Text="MyStore" Style="{StaticResource Headline1}" TextColor="White"/>
+            <Label Text="Browse our products" TextColor="White" FontSize="14"/>
+        </StackLayout>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator
+            Grid.Row="1"
+            IsRunning="{Binding IsLoading}"
+            IsVisible="{Binding IsLoading}"
+            Color="{StaticResource PrimaryColor}"/>
+
+        <!-- Error Message -->
+        <Label
+            Grid.Row="1"
+            Text="{Binding ErrorMessage}"
+            IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNullOrEmptyConverter}}"
+            TextColor="{StaticResource DangerColor}"
+            Padding="16"
+            HorizontalTextAlignment="Center"/>
+
+        <!-- Products Grid -->
+        <Grid Grid.Row="1" Padding="8" ColumnSpacing="8" RowSpacing="8" IsVisible="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CollectionView
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                ItemsSource="{Binding Products}"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding SelectProductCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        HorizontalItemSpacing="8"
+                        VerticalItemSpacing="8"
+                        Columns="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="8" Spacing="4" BackgroundColor="White" CornerRadius="8">
+                            <!-- Product Image Placeholder -->
+                            <Frame Padding="0" CornerRadius="8" HasShadow="False" BorderColor="{StaticResource BorderColor}" BorderWidth="1">
+                                <Label Text="📦" FontSize="40" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" MinimumHeightRequest="100"/>
+                            </Frame>
+
+                            <!-- Product Name -->
+                            <Label
+                                Text="{Binding Name}"
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"/>
+
+                            <!-- Price -->
+                            <Label
+                                Text="{Binding Price, StringFormat='${0:F2}'}"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="{StaticResource PrimaryColor}"/>
+
+                            <!-- Stock -->
+                            <Label
+                                Text="{Binding Stock, StringFormat='Stock: {0}'}"
+                                FontSize="11"
+                                TextColor="{StaticResource TextSecondaryColor}"/>
+
+                            <!-- View Button -->
+                            <Button
+                                Text="View Details"
+                                Style="{StaticResource PrimaryButton}"
+                                FontSize="11"
+                                Padding="8,6"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SelectProductCommand}"
+                                CommandParameter="{Binding .}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>
